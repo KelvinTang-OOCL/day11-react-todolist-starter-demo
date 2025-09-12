@@ -5,5 +5,6 @@ export const initialState = [
 
 // reducer is a pure function that define and gather all state update logic
 export const todoReducer = (state, action) => {
+
   return state;
 };
