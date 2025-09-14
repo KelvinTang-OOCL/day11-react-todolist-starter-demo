@@ -1,18 +1,15 @@
 import React, { useContext } from 'react';
 import { TodoContext } from '../../contexts/TodoContext';
-import { updateTodo, deleteTodo } from '../../apis/api';
 
 export const TodoItem = ({ todo }) => {
-    const { dispatch } = useContext(TodoContext);
+    const { updateTodo, removeTodo } = useContext(TodoContext);
     
     const handleToggle = () => {
-        updateTodo(todo.id, { done: !todo.done });
-        dispatch({ type: 'DONE', id: todo.id });
+        updateTodo(todo.id, { ...todo, done: !todo.done });
     };
     
     const handleDelete = () => {
-        deleteTodo(todo.id);
-        dispatch({ type: 'DELETE', id: todo.id });
+        removeTodo(todo.id);
     };
     
     return (

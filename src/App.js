@@ -1,14 +1,14 @@
-import {useReducer} from "react";
 import './App.css';
-import {initialState, todoReducer} from "./reducers/todoReducer";
 import {TodoList} from "./components/TodoList/TodoList";
 import {TodoContext} from './contexts/TodoContext';
 import {createBrowserRouter, RouterProvider} from "react-router";
 import {DefaultLayout} from "./layouts/DefaultLayout";
 import {About} from "./components/About";
+import {useTodoService} from "./hooks/useTodoService";
 
 function App() {
-    const [todos, dispatch] = useReducer(todoReducer, initialState);
+    const todoService = useTodoService();
+
     const router = createBrowserRouter([
         {
             path: '/',
@@ -28,11 +28,12 @@ function App() {
                 }
             ]
         }
-    ])
+    ]);
+
     return (
         <div className="App">
-            <TodoContext.Provider value={{todos, dispatch}}>
-                <RouterProvider router={router}></RouterProvider>
+            <TodoContext.Provider value={todoService}>
+                <RouterProvider router={router} />
             </TodoContext.Provider>
         </div>
     );

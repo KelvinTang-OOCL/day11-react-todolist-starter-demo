@@ -1,19 +1,13 @@
 import React, {useState, useContext} from 'react';
 import {TodoContext} from '../../contexts/TodoContext';
-import {addTodo} from '../../apis/api';
 
 export const TodoGenerator = () => {
     const [inputValue, setInputValue] = useState('');
-    const {dispatch} = useContext(TodoContext);
+    const {addTodo} = useContext(TodoContext);
 
     const handleSubmit = () => {
         if (inputValue && inputValue.trim()) {
             addTodo({text: inputValue.trim(), done: false});
-            dispatch({
-                type: 'ADD',
-                text: inputValue.trim(),
-                id: Date.now() // 简单的ID生成
-            });
             setInputValue('');
         }
     };

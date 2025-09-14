@@ -1,16 +1,9 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import {TodoContext} from '../../contexts/TodoContext';
 import {TodoItem} from './TodoItem';
-import {getTodos} from "../../apis/api";
 
 export const TodoGroup = () => {
-    const {todos, dispatch} = useContext(TodoContext);
-
-    useEffect(() => {
-        getTodos().then(data => {
-            dispatch({type: 'LOAD_TODOS', todos: data});
-        });
-    }, [dispatch]);
+    const {todos} = useContext(TodoContext);
 
     return (
         <div className="todo-group">
