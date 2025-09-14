@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { TodoContext } from '../contexts/TodoContext';
+import { TodoContext } from '../../contexts/TodoContext';
 import { TodoItem } from './TodoItem';
 
 export const TodoGroup = () => {

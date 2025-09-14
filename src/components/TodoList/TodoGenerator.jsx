@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {TodoContext} from '../contexts/TodoContext';
+import {TodoContext} from '../../contexts/TodoContext';
 
 export const TodoGenerator = () => {
     const [inputValue, setInputValue] = useState('');
