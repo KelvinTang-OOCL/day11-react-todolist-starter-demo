@@ -1,5 +1,6 @@
 import React, {useState, useContext} from 'react';
 import {TodoContext} from '../../contexts/TodoContext';
+import {addTodo} from '../../apis/api';
 
 export const TodoGenerator = () => {
     const [inputValue, setInputValue] = useState('');
@@ -7,6 +8,7 @@ export const TodoGenerator = () => {
 
     const handleSubmit = () => {
         if (inputValue && inputValue.trim()) {
+            addTodo({text: inputValue.trim(), done: false});
             dispatch({
                 type: 'ADD',
                 text: inputValue.trim(),
